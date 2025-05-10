@@ -84,6 +84,7 @@ class trainModel:
                 number_of_edges = len(self.graph.edges())
                 sampling_prob = args.batch_size / number_of_edges
                 steps = each_epoch + 1
+                # Different rdp computation is available from rdp_accountant
                 rdp = compute_rdp(q=sampling_prob, noise_multiplier=args.sigma, steps=steps, orders=orders)
                 _eps, _delta, _ = get_privacy_spent(orders, rdp, target_eps=args.epsilon)
 
